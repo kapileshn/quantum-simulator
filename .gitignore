@@ -1,0 +1,14 @@
+# Git ignore
+node_modules/
+__pycache__/
+*.pyc
+.env
+.pytest_cache/
+Quantum_Simulator_Presentation.pptx
+skills/
+.agents/
+.agent/
+_agents/
+_agent/
+brain/
+tmp/

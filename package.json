@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "docx": "^9.6.1",
+    "pptxgenjs": "^4.0.1"
+  },
+  "name": "quantum-simulator",
+  "version": "1.0.0",
+  "description": "> **QtHack04 — Track 04: Quantum Systems, Problem #21**   > SRMIST Kattankulatham | March 30–31, 2026",
+  "main": "generate_presentation.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

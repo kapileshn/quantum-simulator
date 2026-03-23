@@ -1,0 +1,228 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-9.0.2, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\justi\Desktop\Q\quantum-simulator
+plugins: anyio-4.12.0, Faker-38.2.0, cov-7.0.0, typeguard-4.4.4
+collecting ... collected 7 items
+
+tests/test_api.py::test_root PASSED                                      [ 14%]
+tests/test_api.py::test_list_gates PASSED                                [ 28%]
+tests/test_api.py::test_list_algorithms PASSED                           [ 42%]
+tests/test_api.py::test_simulate_valid_circuit FAILED                    [ 57%]
+tests/test_api.py::test_simulate_invalid_gate FAILED                     [ 71%]
+tests/test_api.py::test_run_algorithm_valid FAILED                       [ 85%]
+tests/test_api.py::test_run_algorithm_not_found PASSED                   [100%]
+
+================================== FAILURES ===================================
+_________________________ test_simulate_valid_circuit _________________________
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\encoders.py:327: in jsonable_encoder
+    data = dict(obj)
+           ^^^^^^^^^
+E   TypeError: 'complex' object is not iterable
+
+During handling of the above exception, another exception occurred:
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\encoders.py:332: in jsonable_encoder
+    data = vars(obj)
+           ^^^^^^^^^
+E   TypeError: vars() argument must have __dict__ attribute
+
+The above exception was the direct cause of the following exception:
+tests\test_api.py:60: in test_simulate_valid_circuit
+    response = client.post("/api/simulate", json=request_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\testclient.py:546: in post
+    return super().post(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1144: in post
+    return self.request(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\testclient.py:445: in request
+    return super().request(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:914: in send
+    response = self._send_handling_auth(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\testclient.py:348: in handle_request
+    raise exc
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\testclient.py:345: in handle_request
+    portal.call(self.app, scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\anyio\from_thread.py:326: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:450: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+..\..\..\AppData\Roaming\Python\Python314\site-packages\anyio\from_thread.py:257: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\applications.py:1138: in __call__
+    await super().__call__(scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py:186: in __call__
+    raise exc
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\cors.py:87: in __call__
+    await self.app(scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:736: in app
+    await route.handle(scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:290: in handle
+    await self.app(scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:121: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:107: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:448: in app
+    content = await serialize_response(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:303: in serialize_response
+    return jsonable_encoder(response_content)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\encoders.py:288: in jsonable_encoder
+    encoded_value = jsonable_encoder(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\encoders.py:288: in jsonable_encoder
+    encoded_value = jsonable_encoder(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\encoders.py:302: in jsonable_encoder
+    jsonable_encoder(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\encoders.py:288: in jsonable_encoder
+    encoded_value = jsonable_encoder(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\encoders.py:335: in jsonable_encoder
+    raise ValueError(errors) from e
+E   ValueError: [TypeError("'complex' object is not iterable"), TypeError('vars() argument must have __dict__ attribute')]
+_________________________ test_simulate_invalid_gate __________________________
+tests\test_api.py:81: in test_simulate_invalid_gate
+    assert response.status_code == 400
+E   assert 500 == 400
+E    +  where 500 = <Response [500 Internal Server Error]>.status_code
+__________________________ test_run_algorithm_valid ___________________________
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\encoders.py:327: in jsonable_encoder
+    data = dict(obj)
+           ^^^^^^^^^
+E   TypeError: 'complex' object is not iterable
+
+During handling of the above exception, another exception occurred:
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\encoders.py:332: in jsonable_encoder
+    data = vars(obj)
+           ^^^^^^^^^
+E   TypeError: vars() argument must have __dict__ attribute
+
+The above exception was the direct cause of the following exception:
+tests\test_api.py:94: in test_run_algorithm_valid
+    response = client.post("/api/algorithms/deutsch_jozsa/run", json=request_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\testclient.py:546: in post
+    return super().post(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1144: in post
+    return self.request(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\testclient.py:445: in request
+    return super().request(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:914: in send
+    response = self._send_handling_auth(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\testclient.py:348: in handle_request
+    raise exc
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\testclient.py:345: in handle_request
+    portal.call(self.app, scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\anyio\from_thread.py:326: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:450: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+..\..\..\AppData\Roaming\Python\Python314\site-packages\anyio\from_thread.py:257: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\applications.py:1138: in __call__
+    await super().__call__(scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py:186: in __call__
+    raise exc
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\cors.py:87: in __call__
+    await self.app(scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:736: in app
+    await route.handle(scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:290: in handle
+    await self.app(scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:121: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:107: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:448: in app
+    content = await serialize_response(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:303: in serialize_response
+    return jsonable_encoder(response_content)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\encoders.py:288: in jsonable_encoder
+    encoded_value = jsonable_encoder(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\encoders.py:288: in jsonable_encoder
+    encoded_value = jsonable_encoder(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\encoders.py:302: in jsonable_encoder
+    jsonable_encoder(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\encoders.py:288: in jsonable_encoder
+    encoded_value = jsonable_encoder(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\encoders.py:302: in jsonable_encoder
+    jsonable_encoder(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\encoders.py:288: in jsonable_encoder
+    encoded_value = jsonable_encoder(
+..\..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\encoders.py:335: in jsonable_encoder
+    raise ValueError(errors) from e
+E   ValueError: [TypeError("'complex' object is not iterable"), TypeError('vars() argument must have __dict__ attribute')]
+=========================== short test summary info ===========================
+FAILED tests/test_api.py::test_simulate_valid_circuit - ValueError: [TypeErro...
+FAILED tests/test_api.py::test_simulate_invalid_gate - assert 500 == 400
+FAILED tests/test_api.py::test_run_algorithm_valid - ValueError: [TypeError("...
+========================= 3 failed, 4 passed in 1.06s =========================

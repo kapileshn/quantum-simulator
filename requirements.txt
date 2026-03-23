@@ -1,0 +1,7 @@
+numpy
+fastapi
+uvicorn[standard]
+python-socketio
+pydantic
+python-dotenv
+pytest
