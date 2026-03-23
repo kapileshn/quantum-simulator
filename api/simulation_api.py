@@ -34,7 +34,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from simulation_engine.quantum_state import QuantumState
 from simulation_engine.gates import GATE_REGISTRY, validate_gate_placement, get_gate_matrix
 from simulation_engine.measurement import measure_qubit, measure_all, get_measurement_statistics
-from simulation_engine.algorithms import deutsch_jozsa, grover, teleportation, bb84, qrng, bell_states
+from simulation_engine.algorithms import deutsch, deutsch_jozsa, grover, teleportation, bb84, qrng, bell_states
 from api.models import (
     CircuitRequest, AlgorithmRequest, SimulationResult,
     AlgorithmResult, AlgorithmInfo, ErrorResponse, GateOperation
@@ -78,6 +78,16 @@ sessions: Dict[str, Dict[str, Any]] = {}
 # =============================================================================
 
 ALGORITHMS = {
+    'deutsch': {
+        'display_name': "Deutsch's Algorithm",
+        'description': 'Determines if a 1-bit function is constant or balanced in one query (IBM Course model)',
+        'category': 'algorithm',
+        'parameters': [
+            {'name': 'case', 'type': 'int', 'default': 1, 'min': 1, 'max': 4,
+             'description': 'Function Case (1:Constant 0, 2:Identity, 3:NOT, 4:Constant 1)'},
+        ],
+        'module': deutsch,
+    },
     'deutsch_jozsa': {
         'display_name': 'Deutsch-Jozsa Algorithm',
         'description': 'Determines if a function is constant or balanced in one query',
